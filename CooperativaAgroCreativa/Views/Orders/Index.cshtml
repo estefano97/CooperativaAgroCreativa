@@ -1,0 +1,51 @@
+﻿@using CooperativaAgroCreativa.Data
+@using CooperativaAgroCreativa.Models.DB
+@model IEnumerable<Product>
+@{
+    ViewData["Title"] = "Ordenes";
+    ViewData["Ordenar"] = "my-buttonActive";
+}
+
+    <h1 class="text-center my-3">Orden De Pedido</h1>
+@if(ViewBag.HayValores) {
+    <div class="my-ProductOrderContainer">
+        @foreach (var producto in Model)
+        {
+        <div class="my-ProductCardOrder">
+            <div class="my-ProductCardOrderText">
+                <p>Id Del Producto: <b>@producto.Id </b></p>
+                <p>Talla: <b>@producto.Description </b></p>
+                <p>Precio: <b>@producto.UnityPrice $</b> </p>
+                <p>Cantidad Agregada: <b>@producto.Quantity Unidades</b></p>
+                <div class="my-ProductCardOrderButtons">
+                    <form method="post" action="/Orders/AddProductOrder">
+                        <input name="Redirect" type="hidden" value="Orders" />
+                        <input name="Id" type="hidden" value=@producto.Id />
+                        <input name="Talla" type="hidden" value=@producto.Description />
+                        <button class="my-AddButton" type="submit"><i class="fa-solid fa-plus"></i></button>
+                    </form>
+                    <button>View</button>
+                   <form method="post" action="/Orders/RestProductOrder">
+                        <input name="Redirect" type="hidden" value="Orders" />
+                        <input name="Id" type="hidden" value=@producto.Id />
+                        <input name="Talla" type="hidden" value=@producto.Description />
+                        <button class="my-RestButton" type="submit"> <i class="fa-solid fa-minus"></i> </button>
+                    </form>
+                </div>
+            </div>
+            <div class="my-ProductCardOrderImg">
+                <img src=@producto.Image alt="Product" />
+            </div>
+        </div>
+        }
+    </div>
+    <h3 class="text-center my-2">Total De Orden De Pedido: $<span>@ViewData["TotalPrice"].00</span></h3>
+
+    <div class="my-buttonOrderContainer">
+        <a href="/Orders/SubmitOrder" class="my-4 My-buttonProducts">Ordenar Pedido</a>
+    </div>
+} else {
+    <div>
+        <p class="text-center">No agregaste ningun producto!, para agregar productos, da <a href="/Products/Index">click aquí</a></p>
+    </div>
+}

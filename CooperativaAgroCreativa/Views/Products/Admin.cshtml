@@ -1,0 +1,41 @@
+﻿@using CooperativaAgroCreativa.Models.DB
+@model IEnumerable<Product>
+@{
+    ViewData["Productos"] = "my-buttonActive";
+    ViewData["Title"] = "Productos";
+}
+
+<div class="container">
+    <h1 class="text-center my-4">Catálogo De Productos</h1>
+    <a href="/Products/Create">Agregar Producto</a>
+    <div class="container">
+  <div class="row">
+    <div class="col-12">
+        <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Cantidad</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+    @foreach (var producto in Model)
+    {
+    <tr>
+        <th scope="row">@producto.Id</th>
+        <td>@producto.Quantity</td>
+        <td>$@producto.UnityPrice</td>
+        <td>
+            <a href="/Products/Edit/@producto.Id" class="btn btn-success">Editar <i class="fas fa-edit"></i></a>
+            <a href="/Products/Delete/@producto.Id" class="btn btn-danger">Eliminar <i class="far fa-trash-alt"></i></a>
+        </td>
+    </tr>
+    }
+    </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</div>

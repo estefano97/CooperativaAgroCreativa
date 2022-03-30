@@ -1,0 +1,128 @@
+﻿@using CooperativaAgroCreativa.Data
+@using Microsoft.AspNetCore.Identity
+@using System.Security.Claims
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - CoopeAgroCreativa</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/css/site.css?v=32.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand mx-2" asp-area="" asp-controller="Home" asp-action="Index"><h2 class="my-title-navbar"><span class="my-title-circle"></span> CoopeAgroCreativa R.L.</h2></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="mx-auto navbar-collapse collapse d-sm-inline-flex justify-content-around">
+                    @if(SignInManager.IsSignedIn(User))
+                    {
+                        @if(User.IsInRole("Administrador"))
+                        {
+                            <ul class="navbar-nav flex-grow-1 justify-content-around">
+                            <li class="nav-item">
+                                <a class="nav-link text-dark @ViewData["Home"]" asp-area="" asp-controller="Home" asp-action="Index">Inicio</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark @ViewData["Productos"]" asp-area="" asp-controller="Products" asp-action="Admin">Panel De Productos</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark @ViewData["Ordenar"]" asp-area="" asp-controller="Home" asp-action="Privacy">Ordenes Pedido</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark @ViewData["Usuarios"]" asp-area="" asp-controller="Administrator" asp-action="Index">Panel De Usuarios</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark @ViewData["Acerca"]" asp-area="" asp-controller="Home" asp-action="About">Acerca De</a>
+                            </li>
+                            <partial name="_LoginPartial" />
+                            </ul>
+                        } else
+                        {
+                            <ul class="navbar-nav flex-grow-1 justify-content-around">
+                            <li class="nav-item">
+                                <a class="nav-link text-dark @ViewData["Home"]" asp-area="" asp-controller="Home" asp-action="Index">Inicio</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark @ViewData["Productos"]" asp-area="" asp-controller="Products" asp-action="Index">Productos</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark @ViewData["Ordenar"]" asp-area="" asp-controller="Orders" asp-action="Index">Ordenes Pedido</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark @ViewData["Acerca"]" asp-area="" asp-controller="Home" asp-action="About">Acerca De</a>
+                            </li>
+                            <partial name="_LoginPartial" />
+                        </ul>
+                        }
+                    } else
+                    {
+                        <ul class="navbar-nav flex-grow-1 justify-content-around">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark @ViewData["Home"]" asp-area="" asp-controller="Home" asp-action="Index">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark @ViewData["Productos"]" asp-area="" asp-controller="Products" asp-action="Index">Productos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark @ViewData["Acerca"]" asp-area="" asp-controller="Home" asp-action="About">Acerca De</a>
+                        </li>
+                        <partial name="_LoginPartial" />
+                    </ul>
+                    }
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        @if(SignInManager.IsSignedIn(User))
+        {
+            <p class="text-center" style="color: gray;">Hola, @User.FindFirstValue(ClaimTypes.Name)!</p>
+        } else
+        {
+            <p class="text-center" style="color: gray;">porfavor, inicia sesión para poder crear ordenes de compra.</p>
+        }
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="my-footer">
+            <img width="200" class="p-2" src="~/assets/images/logo-coopeagro.png" />
+            <ul>
+                <li>
+                   <a asp-area="" asp-controller="Home" asp-action="Privacy">Productos</a>
+                </li>
+                <li>
+                   <a asp-area="" asp-controller="Home" asp-action="Privacy">Servicios</a>
+                </li>
+                <li>
+                   <a asp-area="" asp-controller="Home" asp-action="Privacy">Orden Pedido</a>
+                </li>
+                <li>
+                   <a asp-area="" asp-controller="Home" asp-action="Privacy">Socios</a>
+                </li>
+            </ul>
+            <div class="my-socialMedia">
+                <a href="https://www.facebook.com/"><i class="fa-brands fa-facebook-square"></i></a>
+                <a href="https://www.facebook.com/"><i class="fa-brands fa-google"></i></a>
+                <a href="https://www.facebook.com/"><i class="fa-brands fa-twitter"></i></a>
+                <a href="https://www.facebook.com/"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+            <p class="my-footerDerechos">Derechos Reservados 2021</p>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

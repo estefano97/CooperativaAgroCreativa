@@ -1,0 +1,44 @@
+﻿@using CooperativaAgroCreativa.Models.DB
+@model IEnumerable<Product>
+@{
+    ViewData["Productos"] = "my-buttonActive";
+    ViewData["Title"] = "Productos";
+}
+
+<div class="My-ProductsContainer">
+    <h1 class="text-center my-4">Catálogo De Productos</h1>
+    <div>
+    @foreach (var producto in Model)
+    {
+    <div class="My-ProductsItems">
+       <div class="My-ProducstItems-Left">
+           <h2 class="text-center">Código producto: @producto.Id</h2>
+           <div class="My-ProducstItems-Left_text">
+               <p class="My-ProductsTextTitle"><b>Descripción</b></p>
+               <p>@producto.Description</p>
+               <form method="post" action="/Orders/AddProductOrder">
+               <div class="My-ProductsTextInfo">
+                   <p><b>Cantidad Disponible:</b> @producto.Quantity</p>
+                   
+                   <p><b>Talla:</b> <select name="Talla">
+                       <option value="Pequeña">Pequeña</option>
+                       <option value="Mediana">Mediana</option>
+                       <option value="Grande">Grande</option>
+                   </select></p>
+               </div>
+               <div class="My-ProductsTextFooter">
+                   <h2>$<span>@producto.UnityPrice</span>.00</h2>
+                   
+                       <input name="Id" type="hidden" value=@producto.Id />
+                       <button class="My-buttonProducts text-center" type="submit">Agregar <i class="fa-solid fa-cart-plus"></i></button>
+               </div>
+               </form>
+           </div>
+       </div>
+       <div class="My-ProducstItems-Right">
+           <img src=@producto.Image />
+       </div>
+    </div>
+    }
+    </div>
+</div>

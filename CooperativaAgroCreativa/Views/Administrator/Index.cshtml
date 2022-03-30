@@ -1,0 +1,63 @@
+﻿@using CooperativaAgroCreativa.Data
+@model IEnumerable<ApplicationUser>
+@{
+    ViewData["Title"] = "Usuarios Solicitantes";
+    ViewData["Usuarios"] = "my-buttonActive";
+}
+
+<h1 class="text-center">Usuarios Registrados</h1>
+
+@if (Model.Any()) {
+
+    foreach (var user in Model)
+    {
+        <div class="card mb-3">
+            <div class="card-header">
+                User Id: @user.Id
+            </div>
+            <div class="card-body">
+                <p><b>Nombre:</b> @user.FullName</p>
+                <p><b>Rol Pedido:</b> @user.Role</p>
+            </div>
+            <form method="post" action="/Administrator/ConfirmUser">
+                <input type="hidden" name="id" value="@user.Id" />
+                <input type="hidden" name="role" value="@user.Role" />
+                <input type="submit" value="Confirmar"/>
+            </form>
+        </div>
+    }
+
+} else {
+    <div class="card">
+        <div class="card-header">
+            No Hay Solicitudes De Usuarios!
+        </div>
+        <div class="card-body">
+
+        </div>
+    </div>
+}
+    <h2 class="text-center my-4 my-TableNotMobile">Usuarios Activos</h2>
+<table class="table table-bordered my-TableNotMobile">
+    <thead>
+        <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Correo</th>
+            <th scope="col">Dirección</th>
+            <th scope="col">Telefono</th>
+            <th scope="col">Rol</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach(ApplicationUser userComplete in ViewBag.UsuariosCompleto)
+    {
+        <tr>
+            <td scope="row">@userComplete.FullName</td>
+            <td>@userComplete.Email</td>
+            <td>@userComplete.Direction</td>
+            <td>@userComplete.Movil</td>
+            <td>@userComplete.Role</td>
+        </tr>
+    }
+    </tbody>
+</table>

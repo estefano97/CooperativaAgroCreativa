@@ -1,0 +1,24 @@
+﻿@using CooperativaAgroCreativa.Data
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+<ul class="navbar-nav">
+@if (SignInManager.IsSignedIn(User))
+{
+    <li class="my-itemLogin">
+        <form  class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+            <button  type="submit" class="nav-link btn btn-link text-dark">Cerrar Sesión</button>
+        </form>
+    </li>
+}
+else
+{
+    <li class="my-itemLogin">
+        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Registrate</a>
+    </li>
+    <li class="my-itemLogin">
+        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Logueate</a>
+    </li>
+}
+</ul>

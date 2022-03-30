@@ -1,0 +1,59 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Registro";
+    ViewData["Title"] = "Register";
+}
+
+<div class="my-RegisterTitle">
+    <h1 class="text-center my-4">Registrarse</h1>
+    <p>Tener en cuenta que al registrarse, su cuenta tiene que ser verificada por un administrador del sitio.</p>
+</div>
+
+<form asp-route-returnUrl="@Model.ReturnUrl" class="my-usuariosLogin" method="post">
+<div asp-validation-summary="All" class="text-danger"></div>
+    <div>
+        <label asp-for="Input.Email"></label>
+        <input asp-for="Input.Email" class="form-control" />
+        <span asp-validation-for="Input.Email" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="Input.FullName"></label>
+        <input asp-for="Input.FullName" class="form-control" />
+        <span asp-validation-for="Input.FullName" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="Input.Direction"></label>
+        <input asp-for="Input.Direction" class="form-control" />
+        <span asp-validation-for="Input.Direction" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="Input.Movil"></label>
+        <input asp-for="Input.Movil" class="form-control" />
+        <span asp-validation-for="Input.Movil" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="Input.Role">Rol</label>
+        <select asp-for="Input.Role">
+            <option value="Administrador">Administrador</option>
+            <option value="Usuario">Usuario</option>
+            <option value="Socio">Socio</option>
+        </select>
+        <span asp-validation-for="Input.Role" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="Input.Password"></label>
+        <input asp-for="Input.Password" class="form-control" />
+        <span asp-validation-for="Input.Password" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="Input.ConfirmPassword"></label>
+        <input asp-for="Input.ConfirmPassword" class="form-control" />
+        <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+    </div>
+    <input type="submit" value="Registrarse"/>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,34 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Login";
+    ViewData["Usuarios"] = "my-buttonActive";
+}
+<div  class="my-usuariosContainer">
+    <div class="my-usuariosTitle">
+        <h1 class="text-center my-4">Inicia Sesión</h1>
+        <p>Si tienes una cuenta ya verificada por un administrador, procede a iniciar sesión, en caso contrario</p>
+    </div>
+    <form id="account" class="my-usuariosLogin" method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="Input.Email"></label>
+        <input asp-for="Input.Email" class="form-control" />
+        <span asp-validation-for="Input.Email" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Input.Password">Contraseña</label>
+        <input asp-for="Input.Password" class="form-control" />
+        <span asp-validation-for="Input.Password" class="text-danger"></span>
+    </div>
+    <input type="submit" value="Iniciar Sesión"/>
+    <div class="my-usuariosFooter">
+        <p> Si no tienes cuenta, puede solicitar registrarte aquí:  <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl"> Registrate!</a></p>
+    </div>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
