@@ -1,0 +1,41 @@
+﻿@using CooperativaAgroCreativa.Data
+@using CooperativaAgroCreativa.Models.DB
+@model IEnumerable<OrdersCreated>
+@{
+    ViewData["Title"] = "Historial";
+    ViewData["Ordenar"] = "my-buttonActive";
+}
+<h1 class="my-4 text-center">Compras Realizadas</h1>
+<div>
+    @if(Model.Any())
+{
+    <table class="table my-tableResponsive table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">Fecha</th>
+            <th scope="col">Id Compra</th>
+            <th scope="col">Status</th>
+            <th scope="col">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+        @foreach (var orden in Model)
+        {
+            <tr>
+                <td> @orden.Date </td>
+                <td> @orden.Id </td>
+                @if(orden.IsAcepted == 0) {
+                    <td style="color:orange;">Pendiente</td>
+                } else {
+                    <td style="color:green;">Aceptada</td>
+                }
+                <td> <a href="/Orders/Finished/@orden.Id">Ver Comprobante</a></td>
+            </tr>
+        }
+        </tbody>
+        </table>
+    } else
+    {
+        <h5 style="color: gray;" class="my-3 text-center">Todavía no realizas ninguna  compra!</h5>
+    }
+</div>

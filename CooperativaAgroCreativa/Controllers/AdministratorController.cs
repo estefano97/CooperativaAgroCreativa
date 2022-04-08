@@ -80,5 +80,14 @@ namespace CooperativaAgroCreativa.Controllers
 
             return View();
         }
+
+        [Authorize(Roles = "Administrador")]
+        public IActionResult Orders ()
+        {
+            CoopeCreativa_RLContext db = new CoopeCreativa_RLContext();
+            List<OrdersCreated> ordenes = db.OrdersCreateds.Where(d => d.IsAcepted == 0).ToList();
+            return View(ordenes);
+        }
+
     }
 }

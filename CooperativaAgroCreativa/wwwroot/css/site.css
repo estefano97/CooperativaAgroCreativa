@@ -584,6 +584,18 @@ body {
     justify-content: center;
 }
 
+.my-SubmitOrderContainer{
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    flex-direction:column;
+    margin: 2rem auto;
+}
+
+.my-SubmitOrderContainer > p{
+    color: gray;
+}
+
 @media screen and (max-width:990px) {
     .my-mainRight {
         width: 100%;
@@ -645,5 +657,22 @@ body {
 
     .my-TableNotMobile{
         display: none;
+    }
+
+    .my-tableResponsive {
+        width: 95vw;
+        transform: scale(.8);
+    }
+}
+
+@media screen and (max-width:370px) {
+    .my-tableResponsive {
+        margin-left: -2rem;
+    }
+}
+
+@media screen and (max-width:336px) {
+    .my-tableResponsive {
+        margin-left: -3rem;
     }
 }

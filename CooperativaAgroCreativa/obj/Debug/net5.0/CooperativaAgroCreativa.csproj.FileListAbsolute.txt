@@ -171,3 +171,13 @@ C:\Users\kali_\source\repos\CooperativaAgroCreativa\CooperativaAgroCreativa\obj\
 C:\Users\kali_\source\repos\CooperativaAgroCreativa\CooperativaAgroCreativa\obj\Debug\net5.0\Razor\Views\Products\Delete.cshtml.g.cs
 C:\Users\kali_\source\repos\CooperativaAgroCreativa\CooperativaAgroCreativa\obj\Debug\net5.0\Razor\Views\Products\Create.cshtml.g.cs
 C:\Users\kali_\source\repos\CooperativaAgroCreativa\CooperativaAgroCreativa\obj\Debug\net5.0\Razor\Views\Orders\Index.cshtml.g.cs
+C:\Users\kali_\source\repos\CooperativaAgroCreativa\CooperativaAgroCreativa\obj\Debug\net5.0\Razor\Views\Orders\SubmitOrder.cshtml.g.cs
+C:\Users\kali_\source\repos\CooperativaAgroCreativa\CooperativaAgroCreativa\bin\Debug\net5.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\kali_\source\repos\CooperativaAgroCreativa\CooperativaAgroCreativa\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.Razor.Extensions.dll
+C:\Users\kali_\source\repos\CooperativaAgroCreativa\CooperativaAgroCreativa\bin\Debug\net5.0\Microsoft.DotNet.PlatformAbstractions.dll
+C:\Users\kali_\source\repos\CooperativaAgroCreativa\CooperativaAgroCreativa\bin\Debug\net5.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\kali_\source\repos\CooperativaAgroCreativa\CooperativaAgroCreativa\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll
+C:\Users\kali_\source\repos\CooperativaAgroCreativa\CooperativaAgroCreativa\bin\Debug\net5.0\Rotativa.AspNetCore.dll
+C:\Users\kali_\source\repos\CooperativaAgroCreativa\CooperativaAgroCreativa\obj\Debug\net5.0\Razor\Views\Orders\Order.cshtml.g.cs
+C:\Users\kali_\source\repos\CooperativaAgroCreativa\CooperativaAgroCreativa\obj\Debug\net5.0\Razor\Views\Orders\History.cshtml.g.cs
+C:\Users\kali_\source\repos\CooperativaAgroCreativa\CooperativaAgroCreativa\obj\Debug\net5.0\Razor\Views\Administrator\Orders.cshtml.g.cs

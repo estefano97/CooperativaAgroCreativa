@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using Rotativa.AspNetCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -180,5 +181,173 @@ namespace CooperativaAgroCreativa.Controllers
             }
         }
 
+        [Authorize(Roles = "Administrador, Socio, Usuario")]
+        public IActionResult SubmitOrder()
+        {
+            var usuario = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            int totalPrice = 0;
+            CoopeCreativa_RLContext db = new CoopeCreativa_RLContext();
+            var userCart = db.UserOrders.Where(d => d.UserId == usuario).FirstOrDefault();
+            if (userCart == null || userCart.OrderProducts == "[]")
+            {
+                ViewBag.HayValores = false;
+                return View();
+            }
+
+            ViewBag.HayValores = true;
+            List<OrderProducts> userProducts = JsonConvert.DeserializeObject<List<OrderProducts>>(userCart.OrderProducts);
+            List<OrderProducts> productosNotFound = new List<OrderProducts>();
+            List<Product> productos = new List<Product>();
+            foreach (OrderProducts elements in userProducts)
+            {
+                if (db.Products.Where(d => d.Id == Int32.Parse(elements.ProductId)).Count() != 0)
+                {
+                    Product data = db.Products.Where(d => d.Id == Int32.Parse(elements.ProductId)).FirstOrDefault();
+                    Product element = new Product();
+
+                    element.Id = data.Id;
+                    element.UnityPrice = data.UnityPrice;
+                    element.Image = data.Image;
+                    element.Description = elements.Talla;
+                    element.Quantity = elements.Quantity;
+                    productos.Add(element);
+
+                    totalPrice += Int32.Parse(data.UnityPrice) * element.Quantity;
+                }
+                else
+                {
+                    productosNotFound.Add(elements);
+                }
+            }
+
+            if (productosNotFound.Count() >= 1)
+            {
+                foreach (OrderProducts element in productosNotFound)
+                {
+                    userProducts.Remove(element);
+                }
+
+                userCart.OrderProducts = JsonConvert.SerializeObject(userProducts);
+                db.SaveChanges();
+            }
+
+            ViewData["TotalPrice"] = totalPrice;
+            return View(productos);
+        }
+
+        [Authorize]
+        [HttpPost]
+        public IActionResult Finished()
+        {
+            var usuario = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            int totalPrice = 0;
+            CoopeCreativa_RLContext db = new CoopeCreativa_RLContext();
+            var userCart = db.UserOrders.Where(d => d.UserId == usuario).FirstOrDefault();
+
+            List<OrderProducts> userProducts = JsonConvert.DeserializeObject<List<OrderProducts>>(userCart.OrderProducts);
+            List<OrderProducts> productosNotFound = new List<OrderProducts>();
+            List<Product> productos = new List<Product>();
+            foreach (OrderProducts elements in userProducts)
+            {
+                if (db.Products.Where(d => d.Id == Int32.Parse(elements.ProductId)).Count() != 0)
+                {
+                    Product data = db.Products.Where(d => d.Id == Int32.Parse(elements.ProductId)).FirstOrDefault();
+                    Product element = new Product();
+
+                    element.Id = data.Id;
+                    element.UnityPrice = data.UnityPrice;
+                    element.Image = data.Image;
+                    element.Description = elements.Talla;
+                    element.Quantity = elements.Quantity;
+                    productos.Add(element);
+
+                    totalPrice += Int32.Parse(data.UnityPrice) * element.Quantity;
+                }
+                else
+                {
+                    productosNotFound.Add(elements);
+                }
+            }
+
+            if (productosNotFound.Count() >= 1)
+            {
+                foreach (OrderProducts element in productosNotFound)
+                {
+                    userProducts.Remove(element);
+                }
+
+                userCart.OrderProducts = JsonConvert.SerializeObject(userProducts);
+                db.SaveChanges();
+            }
+
+            OrdersCreated ordenCreate = new OrdersCreated();
+            ordenCreate.Date = DateTime.Now;
+            ordenCreate.Products = JsonConvert.SerializeObject(userProducts);
+            ordenCreate.IdUser = usuario;
+            ordenCreate.IsAcepted = 0;
+
+            var CartDelete = db.UserOrders.Where(d => d.UserId == usuario).FirstOrDefault();
+            db.OrdersCreateds.Add(ordenCreate);
+            db.UserOrders.Remove(CartDelete);
+
+            db.SaveChanges();
+
+            OrdersCreated YaCreada = db.OrdersCreateds.Where(d => d == ordenCreate).FirstOrDefault();
+            HttpContext.Items["Id"] = YaCreada.Id;
+            HttpContext.Items["Hour"] = YaCreada.Date.ToString();
+            HttpContext.Items["TotalPrice"] = totalPrice;
+
+            return new ViewAsPdf("Order", productos)
+            {
+
+            };
+        }
+
+        public IActionResult History()
+        {
+            var usuario = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            CoopeCreativa_RLContext db = new CoopeCreativa_RLContext();
+            List<OrdersCreated> orders = db.OrdersCreateds.Where(d => d.IdUser == usuario).ToList();
+            return View(orders);
+        }
+
+        public IActionResult Finished(int id)
+        {
+            var usuario = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            CoopeCreativa_RLContext db = new CoopeCreativa_RLContext();
+            OrdersCreated order = db.OrdersCreateds.Where(d => d.IdUser == usuario && d.Id == id).FirstOrDefault();
+
+            List<OrderProducts> userProducts = JsonConvert.DeserializeObject<List<OrderProducts>>(order.Products);
+            List<Product> viewProducts = new List<Product>();
+
+            int totalPrice = 0;
+
+            foreach(var product in userProducts)
+            {
+                Product data = db.Products.Where(d => d.Id == Int32.Parse(product.ProductId)).FirstOrDefault();
+                Product nuevo = new Product();
+                nuevo.Id = Int32.Parse(product.ProductId);
+                nuevo.Description = product.Talla;
+                nuevo.Quantity = product.Quantity;
+                nuevo.UnityPrice = data.UnityPrice;
+                totalPrice += Int32.Parse(nuevo.UnityPrice) * nuevo.Quantity;
+                viewProducts.Add(nuevo);
+            }
+
+            HttpContext.Items["Id"] = order.Id;
+            HttpContext.Items["Hour"] = order.Date.ToString();
+            HttpContext.Items["TotalPrice"] = totalPrice;
+
+            return new ViewAsPdf("Order", viewProducts)
+            {
+
+            };
+        }
+
+        public IActionResult AceptedOrder ()
+        {
+
+            return View();
+        }
     }
 }

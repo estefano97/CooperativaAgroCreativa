@@ -24,6 +24,7 @@ namespace CooperativaAgroCreativa.Models.DB
         public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
         public virtual DbSet<AspNetUserRole> AspNetUserRoles { get; set; }
         public virtual DbSet<AspNetUserToken> AspNetUserTokens { get; set; }
+        public virtual DbSet<OrdersCreated> OrdersCreateds { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<UserOrder> UserOrders { get; set; }
 
@@ -141,6 +142,17 @@ namespace CooperativaAgroCreativa.Models.DB
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.AspNetUserTokens)
                     .HasForeignKey(d => d.UserId);
+            });
+
+            modelBuilder.Entity<OrdersCreated>(entity =>
+            {
+                entity.ToTable("OrdersCreated");
+
+                entity.Property(e => e.Date).HasColumnType("datetime");
+
+                entity.Property(e => e.IdUser).IsRequired();
+
+                entity.Property(e => e.Products).IsRequired();
             });
 
             modelBuilder.Entity<Product>(entity =>

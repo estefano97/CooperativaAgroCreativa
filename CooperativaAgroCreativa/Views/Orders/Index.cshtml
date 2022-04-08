@@ -7,6 +7,7 @@
 }
 
     <h1 class="text-center my-3">Orden De Pedido</h1>
+    <a href="/Orders/History">Ver Registro De Pedidos</a>
 @if(ViewBag.HayValores) {
     <div class="my-ProductOrderContainer">
         @foreach (var producto in Model)
@@ -15,21 +16,20 @@
             <div class="my-ProductCardOrderText">
                 <p>Id Del Producto: <b>@producto.Id </b></p>
                 <p>Talla: <b>@producto.Description </b></p>
-                <p>Precio: <b>@producto.UnityPrice $</b> </p>
+                <p>Precio: <b>@producto.UnityPrice ¢</b> </p>
                 <p>Cantidad Agregada: <b>@producto.Quantity Unidades</b></p>
                 <div class="my-ProductCardOrderButtons">
+                    <form method="post" action="/Orders/RestProductOrder">
+                        <input name="Redirect" type="hidden" value="Orders" />
+                        <input name="Id" type="hidden" value=@producto.Id />
+                        <input name="Talla" type="hidden" value=@producto.Description />
+                        <button class="my-RestButton" type="submit"> <i class="fa-solid fa-minus"></i> </button>
+                    </form>
                     <form method="post" action="/Orders/AddProductOrder">
                         <input name="Redirect" type="hidden" value="Orders" />
                         <input name="Id" type="hidden" value=@producto.Id />
                         <input name="Talla" type="hidden" value=@producto.Description />
                         <button class="my-AddButton" type="submit"><i class="fa-solid fa-plus"></i></button>
-                    </form>
-                    <button>View</button>
-                   <form method="post" action="/Orders/RestProductOrder">
-                        <input name="Redirect" type="hidden" value="Orders" />
-                        <input name="Id" type="hidden" value=@producto.Id />
-                        <input name="Talla" type="hidden" value=@producto.Description />
-                        <button class="my-RestButton" type="submit"> <i class="fa-solid fa-minus"></i> </button>
                     </form>
                 </div>
             </div>
