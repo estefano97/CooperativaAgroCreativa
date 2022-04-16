@@ -1,0 +1,14 @@
+﻿@using CooperativaAgroCreativa.Models.DB
+@model Service
+@{
+    ViewData["Servicios"] = "my-buttonActive";
+    ViewData["Title"] = "Servicios";
+}
+
+<div class="container">
+    <h1 class="text-center my-5">¿Esta seguro que desea eliminar el elemento del id: @Model.Id ?</h1>
+    <form class="my-DeleteForm" action="/Services/DeletePost" method="post">
+        <input name="Id" type="hidden" value=@Model.Id />
+        <input type="submit" value="Confirmar"/>
+    </form>
+</div>

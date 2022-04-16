@@ -1,0 +1,25 @@
+﻿@using CooperativaAgroCreativa.Data
+@using CooperativaAgroCreativa.Models.DB
+@model AspNetUser
+@{
+    ViewData["Title"] = "Perfil";
+    ViewData["Perfil"] = "my-buttonActive";
+}
+
+<main>
+    <h1 class="text-center my-4">Selecciona tu nuevo rol</h1>
+    <div class="mx-auto" style="font-size: 1.15rem;">
+    <p class="text-center" style="color: var(--danger);">Atención!, al seleccionar un nuevo rol, tu cuenta será suspendida hasta que un Administrador del sitio decida asignarte el nuevo rol.</p>
+    <form class="my-ChangeInfoForm" method="post" action="/Perfil/ChangeRolConfirm">
+        <select name="newRol">
+            <option value="Administrador">Administrador</option>
+            <option value="Usuario">Usuario</option>
+            <option value="Socio">Socio</option>
+        </select>
+
+        <h4 class="text-center" style="color: var(--danger); margin: 1rem auto;">Cierra sesión para que los cambios surgan efecto</h4>
+
+        <input type="submit" value="Confirmar"/>
+    </form>
+    </div>
+</main>

@@ -60,6 +60,7 @@ namespace CooperativaAgroCreativa.Controllers
             return RedirectToAction("Index", "Administrator");
         }
 
+        [Authorize(Roles = "Administrador")]
         [HttpPost]
         public async Task<IActionResult> CreateRole(CreateRoleViewModel model)
         {
@@ -88,6 +89,20 @@ namespace CooperativaAgroCreativa.Controllers
             List<OrdersCreated> ordenes = db.OrdersCreateds.Where(d => d.IsAcepted == 0).ToList();
             return View(ordenes);
         }
+
+        [Authorize(Roles = "Administrador")]
+        [HttpPost]
+        public IActionResult DeleteUser(string id)
+        {
+            var db = new CoopeCreativa_RLContext();
+            var user = db.AspNetUsers.Where(d => d.Id == id).FirstOrDefault();
+            db.AspNetUsers.Remove(user);
+            db.SaveChanges();
+
+            return RedirectToAction("Index", "Administrator");
+        }
+
+
 
     }
 }

@@ -6,7 +6,7 @@
     ViewData["Ordenar"] = "my-buttonActive";
 }
 <div>
-<h1 class="text-center my-4">Productos Agregados</h1>
+<h1 class="text-center my-4">Productos agregados</h1>
   
 @if(ViewBag.HayValores)
 {
@@ -16,9 +16,9 @@
           <tr>
             <th scope="col">Id</th>
             <th scope="col">Talla</th>
-            <th scope="col">Cantidad Agregada</th>
-            <th scope="col">Precio Unidad</th>
-            <th scope="col">Precio Total Por Producto</th>
+            <th scope="col">Cantidad agregada</th>
+            <th scope="col">Precio unidad</th>
+            <th scope="col">Precio total por producto</th>
           </tr>
         </thead>
         <tbody>
@@ -28,15 +28,15 @@
                 <td> @producto.Id </td>
                 <td> @producto.Description </td>
                 <td> @producto.Quantity </td>
-                <td> $@producto.UnityPrice </td>
-                <td> $@(Int32.Parse(producto.UnityPrice) * producto.Quantity) </td>
+                <td> ¢@producto.UnityPrice </td>
+                <td> ¢@(Int32.Parse(producto.UnityPrice) * producto.Quantity) </td>
             </tr>
         }
         </tbody>
         <tfoot>
             <tr>
-                <td colspan="4"><h3>Cantidad a Pagar:</h3></td>
-                <td class="text-center"><h3>@ViewData["TotalPrice"].00$</h3></td>
+                <td colspan="4"><h3>Cantidad a pagar:</h3></td>
+                <td class="text-center"><h3>¢ @ViewData["TotalPrice"].00</h3></td>
             </tr>
         </tfoot>
         </table>

@@ -1,0 +1,45 @@
+﻿@using CooperativaAgroCreativa.Models.DB
+@model IEnumerable<Service>
+@{
+    ViewData["Servicios"] = "my-buttonActive";
+    ViewData["Title"] = "Servicos";
+}
+
+<div class="container">
+    <h1 class="text-center my-4">Catálogo de servicios</h1>
+    <a href="/Services/Create">Agregar servicio</a>
+    <div class="container">
+  <div class="row">
+    <div class="col-12">
+        <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Título</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+    @foreach (var producto in Model)
+    {
+    <tr>
+        <th scope="row">@producto.Id</th>
+        @if(producto.Title.Length > 45) {
+            <td>@producto.Title </td>
+        } else {
+            <td>@producto.Title </td>
+        }
+        <td>¢@producto.Price</td>
+        <td>
+            <a href="/Services/Edit/@producto.Id" class="btn btn-success">Editar <i class="fas fa-edit"></i></a>
+            <a href="/Services/Delete/@producto.Id" class="btn btn-danger">Eliminar <i class="far fa-trash-alt"></i></a>
+        </td>
+    </tr>
+    }
+    </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</div>

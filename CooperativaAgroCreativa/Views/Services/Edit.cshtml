@@ -1,0 +1,30 @@
+﻿@using CooperativaAgroCreativa.Models.DB
+@model Service
+@{
+    ViewData["Servicios"] = "my-buttonActive";
+    ViewData["Title"] = "Servicios";
+}
+
+<div class="My-ProductsContainer">
+    <h1 class="text-center my-4">Editar el producto @Model.Id</h1>
+
+    <form action="/Services/EditPost" method="post" class="my-EditForm">
+        <label>Título</label>
+        <input required name="title" type="text" value="@Model.Title" />
+
+        <label>Price</label>
+        <input required name="price" type="number" value=@Model.Price />
+
+        <label>Descripción</label>
+        <textarea required width="300" height="250" name="description" >@Model.Description</textarea>
+
+        <input class="my-submitForm" type="submit" value="Confirmar"/>
+    </form>
+
+    <form class="my-FormImage" action="/Services/EditImage" enctype="multipart/form-data" method="post">
+    <h2 class="text-center">Cambiar imagen</h2>
+        <input type="file" name="Foto"/>
+        <input type="hidden" value=@Model.Id name="Id"/>
+        <input class="my-submitForm" type="submit" value="cambiar foto"/>
+    </form>
+</div>

@@ -6,7 +6,7 @@
 }
 
 <div class="container">
-    <h1 class="text-center my-5">¿Esta Seguro Que Desea Eliminar El Elemento Del Id: @Model.Id ?</h1>
+    <h1 class="text-center my-5">¿Esta seguro que desea eliminar el elemento del id: @Model.Id ?</h1>
     <form class="my-DeleteForm" action="/Products/DeletePost" method="post">
         <input name="Id" type="hidden" value=@Model.Id />
         <input type="submit" value="Confirmar"/>

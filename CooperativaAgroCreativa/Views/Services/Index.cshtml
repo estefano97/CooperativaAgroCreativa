@@ -1,0 +1,21 @@
+﻿@using CooperativaAgroCreativa.Models.DB
+@model IEnumerable<Service>
+@{
+    ViewData["Servicios"] = "my-buttonActive";
+    ViewData["Title"] = "Servicios";
+}
+
+@if(Model.Any()){
+    foreach (var service in Model)
+    {
+        <div class="my-ServicesTemplate">
+            <h1>@service.Title</h1>
+            <p>@service.Description</p>
+            <h3>Precio: <i>¢ @service.Price</i></h3>
+            <img src="@service.Image" />
+            <hr>
+        </div>
+    }
+} else {
+    <h3 class="text-center mx-auto my-5">No hay servicios disponibles por el momento.</h3>
+}

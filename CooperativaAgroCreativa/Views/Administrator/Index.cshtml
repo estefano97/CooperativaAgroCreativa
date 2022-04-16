@@ -5,7 +5,7 @@
     ViewData["Usuarios"] = "my-buttonActive";
 }
 
-<h1 class="text-center">Usuarios Registrados</h1>
+<h1 class="text-center">Usuarios registrados</h1>
 
 @if (Model.Any()) {
 
@@ -17,27 +17,35 @@
             </div>
             <div class="card-body">
                 <p><b>Nombre:</b> @user.FullName</p>
-                <p><b>Rol Pedido:</b> @user.Role</p>
+                <p><b>Rol solicitado:</b> @user.Role</p>
             </div>
-            <form method="post" action="/Administrator/ConfirmUser">
-                <input type="hidden" name="id" value="@user.Id" />
-                <input type="hidden" name="role" value="@user.Role" />
-                <input type="submit" value="Confirmar"/>
-            </form>
+            <div class="my-UserCardButtons">
+                <form method="post" action="/Administrator/ConfirmUser">
+                    <input type="hidden" name="id" value="@user.Id" />
+                    <input type="hidden" name="role" value="@user.Role" />
+                    <input type="submit" value="Confirmar"/>
+                </form>
+                <form method="post" action="/Administrator/DeleteUser">
+                    <input type="hidden" name="id" value="@user.Id" />
+                    <input type="hidden" name="role" value="@user.Role" />
+                    <input type="submit" value="Eliminar"/>
+                </form>
+            </div>
+
         </div>
     }
 
 } else {
     <div class="card">
         <div class="card-header">
-            No Hay Solicitudes De Usuarios!
+            No hay solicitudes de usuarios!
         </div>
         <div class="card-body">
 
         </div>
     </div>
 }
-    <h2 class="text-center my-4 my-TableNotMobile">Usuarios Activos</h2>
+    <h2 class="text-center my-4 my-TableNotMobile">Usuarios activos</h2>
 <table class="table table-bordered my-TableNotMobile">
     <thead>
         <tr>

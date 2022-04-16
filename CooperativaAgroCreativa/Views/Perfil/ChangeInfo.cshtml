@@ -1,0 +1,28 @@
+﻿@using CooperativaAgroCreativa.Data
+@using CooperativaAgroCreativa.Models.DB
+@model AspNetUser
+@{
+    ViewData["Title"] = "Perfil";
+    ViewData["Perfil"] = "my-buttonActive";
+}
+
+<main>
+    <h1 class="text-center my-4">Edita tu información</h1>
+    <div class="mx-auto" style="font-size: 1.15rem; width: 25rem;">
+        <form class="my-ChangeInfoForm" method="post" action="/Perfil/ChangeInfoConfirm">
+            <div>
+                <label for="name">Nombre</label>
+                <input type="text" name="name" value="@Model.FullName" />
+            </div>
+            <div>
+                <label for="direction">Dirección</label>
+                <input type="text" name="direction" value="@Model.Direction" />
+            </div>
+            <div>
+                <label for="mobile">Teléfono</label>
+                <input type="text" name="mobile" value="@Model.Movil" maxlength="10"/>
+            </div>
+            <input type="submit" value="Confirmar"/>
+        </form>
+    </div>
+</main>

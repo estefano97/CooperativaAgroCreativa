@@ -1,0 +1,27 @@
+﻿@{
+    ViewData["Title"] = "Formulario";
+    ViewData["Acerca"] = "my-buttonActive";
+}
+
+<main>
+    <h1 class="text-center my-4">Formulario De Contacto</h1>
+    <form method="post" class="my-ChangeInfoForm" action="/Home/SendForm">
+        <div>
+            <label for="nombre">Nombre:</label>
+            <input required type="text" name="nombre" id="nombre" />
+        </div>
+        <div>
+            <label for="correo">Tu correo electronico:</label>
+            <input required type="email" name="correo" id="correo" />
+        </div>
+        <div>
+            <label for="direccion">Dirección:</label>
+            <input required type="text" name="direccion" id="direccion" />
+        </div>
+        <div>
+            <label for="comentarios">Tus comentarios:</label>
+            <textarea required name="comentarios" id="comentarios"></textarea>
+        </div>
+        <input type="submit" value="Enviar"/>
+    </form>
+</main>

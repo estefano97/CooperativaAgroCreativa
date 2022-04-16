@@ -14,5 +14,6 @@ namespace CooperativaAgroCreativa.Models.DB
         public string State { get; set; }
         public DateTime? Date { get; set; }
         public string Image { get; set; }
+        public int? Sizes { get; set; }
     }
 }

@@ -1,0 +1,21 @@
+﻿@{
+    ViewData["Servicios"] = "my-buttonActive";
+    ViewData["Title"] = "Servicios";
+}
+
+<div class="My-ProductsContainer">
+    <h1 class="text-center my-4">Agregar servicio</h1>
+    <form action="/Services/CreatePost" method="post" class="my-EditForm">
+
+        <label for="Quantity">Título</label>
+        <input required name="title" type="text"/>
+
+        <label for="price">Price</label>
+        <input required name="price" type="number"/>
+
+        <label>Descripción</label>
+        <textarea required width="300" height="250" name="description"></textarea>
+
+        <input class="my-submitForm" type="submit" value="Confirmar"/>
+    </form>
+</div>

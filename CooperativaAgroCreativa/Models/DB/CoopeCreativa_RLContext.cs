@@ -26,6 +26,7 @@ namespace CooperativaAgroCreativa.Models.DB
         public virtual DbSet<AspNetUserToken> AspNetUserTokens { get; set; }
         public virtual DbSet<OrdersCreated> OrdersCreateds { get; set; }
         public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<Service> Services { get; set; }
         public virtual DbSet<UserOrder> UserOrders { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -169,6 +170,15 @@ namespace CooperativaAgroCreativa.Models.DB
                     .IsRequired()
                     .HasMaxLength(10)
                     .IsFixedLength(true);
+            });
+
+            modelBuilder.Entity<Service>(entity =>
+            {
+                entity.Property(e => e.Description).IsRequired();
+
+                entity.Property(e => e.Image).IsRequired();
+
+                entity.Property(e => e.Title).IsRequired();
             });
 
             modelBuilder.Entity<UserOrder>(entity =>

@@ -6,7 +6,7 @@
 }
 
 <div class="My-ProductsContainer">
-    <h1 class="text-center my-4">Catálogo De Productos</h1>
+    <h1 class="text-center my-4">Catálogo de productos</h1>
     <div>
     @foreach (var producto in Model)
     {
@@ -18,16 +18,21 @@
                <p>@producto.Description</p>
                <form method="post" action="/Orders/AddProductOrder">
                <div class="My-ProductsTextInfo">
-                   <p><b>Cantidad Disponible:</b> @producto.Quantity</p>
+                   <p><b>Cantidad disponible:</b> @producto.Quantity</p>
                    
-                   <p><b>Talla:</b> <select name="Talla">
+                   @if(producto.Sizes == 1) {
+                       <p><b>Talla:</b> <select name="Talla">
                        <option value="Pequeña">Pequeña</option>
                        <option value="Mediana">Mediana</option>
                        <option value="Grande">Grande</option>
+                       <option value="ExtraGrande">Extra Grande</option>
                    </select></p>
+                   } else {
+                       <p style="color: gray;">Talla no aplicable</p>
+                   }
                </div>
                <div class="My-ProductsTextFooter">
-                   <h2>$<span>@producto.UnityPrice</span>.00</h2>
+                   <h2>¢ <span>@producto.UnityPrice</span>.00</h2>
                    
                        <input name="Id" type="hidden" value=@producto.Id />
                        <button class="My-buttonProducts text-center" type="submit">Agregar <i class="fa-solid fa-cart-plus"></i></button>

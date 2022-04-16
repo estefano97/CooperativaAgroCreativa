@@ -33,16 +33,13 @@
                                 <a class="nav-link text-dark @ViewData["Home"]" asp-area="" asp-controller="Home" asp-action="Index">Inicio</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark @ViewData["Productos"]" asp-area="" asp-controller="Products" asp-action="Admin">Panel De Productos</a>
+                                <a class="nav-link text-dark @ViewData["Productos"]" asp-area="" asp-controller="Products" asp-action="Admin">Gestión productos y servicios</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark @ViewData["Ordenar"]" asp-area="" asp-controller="Administrator" asp-action="Orders">Ordenes Pedido</a>
+                                <a class="nav-link text-dark @ViewData["Ordenar"]" asp-area="" asp-controller="Administrator" asp-action="Orders">Ordenes de pedidos</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark @ViewData["Usuarios"]" asp-area="" asp-controller="Administrator" asp-action="Index">Panel De Usuarios</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark @ViewData["Acerca"]" asp-area="" asp-controller="Home" asp-action="About">Acerca De</a>
+                                <a class="nav-link text-dark @ViewData["Usuarios"]" asp-area="" asp-controller="Administrator" asp-action="Index">Gestión de usuarios</a>
                             </li>
                             <partial name="_LoginPartial" />
                             </ul>
@@ -56,10 +53,13 @@
                                 <a class="nav-link text-dark @ViewData["Productos"]" asp-area="" asp-controller="Products" asp-action="Index">Productos</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark @ViewData["Ordenar"]" asp-area="" asp-controller="Orders" asp-action="Index">Ordenes Pedido</a>
+                                <a class="nav-link text-dark @ViewData["Ordenar"]" asp-area="" asp-controller="Orders" asp-action="Index">Ordenes pedido</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark @ViewData["Acerca"]" asp-area="" asp-controller="Home" asp-action="About">Acerca De</a>
+                                <a class="nav-link text-dark @ViewData["Perfil"]" asp-area="" asp-controller="Perfil" asp-action="Index">Socios</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark @ViewData["Acerca"]" asp-area="" asp-controller="Home" asp-action="About">Acerca de</a>
                             </li>
                             <partial name="_LoginPartial" />
                         </ul>
@@ -73,8 +73,11 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark @ViewData["Productos"]" asp-area="" asp-controller="Products" asp-action="Index">Productos</a>
                         </li>
+                         <li class="nav-item">
+                            <a class="nav-link text-dark @ViewData["Servicios"]" asp-area="" asp-controller="Services" asp-action="Index">Servicios</a>
+                        </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark @ViewData["Acerca"]" asp-area="" asp-controller="Home" asp-action="About">Acerca De</a>
+                            <a class="nav-link text-dark @ViewData["Acerca"]" asp-area="" asp-controller="Home" asp-action="About">Acerca de</a>
                         </li>
                         <partial name="_LoginPartial" />
                     </ul>
@@ -100,16 +103,16 @@
             <img width="200" class="p-2" src="~/assets/images/logo-coopeagro.png" />
             <ul>
                 <li>
-                   <a asp-area="" asp-controller="Home" asp-action="Privacy">Productos</a>
+                   <a asp-area="" asp-controller="Products" asp-action="Index">Productos</a>
                 </li>
                 <li>
-                   <a asp-area="" asp-controller="Home" asp-action="Privacy">Servicios</a>
+                   <a asp-area="" asp-controller="Services" asp-action="Index">Servicios</a>
                 </li>
                 <li>
-                   <a asp-area="" asp-controller="Home" asp-action="Privacy">Orden Pedido</a>
+                   <a asp-area="" asp-controller="Orders" asp-action="Index">Orden pedido</a>
                 </li>
                 <li>
-                   <a asp-area="" asp-controller="Home" asp-action="Privacy">Socios</a>
+                   <a asp-area="" asp-controller="Perfil" asp-action="Index">Socios</a>
                 </li>
             </ul>
             <div class="my-socialMedia">

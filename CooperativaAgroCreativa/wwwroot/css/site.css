@@ -167,11 +167,14 @@ body {
 
 .my-mainRight {
     width: 50%;
+    text-align: center;
 }
 
-    .my-mainRight > h1 {
-        font-size: 3rem;
-    }
+.my-mainRight > h1 {
+    margin: 1rem auto;
+    margin-top: 0;
+    font-size: 3rem;
+}
 
 .my-mainRight > a {
     border: 1px solid #f76540;
@@ -183,6 +186,7 @@ body {
     border-radius: 6px;
     transition: .25s;
     text-decoration: none;
+    margin-top: 1rem;
 }
 
 .my-mainRight > a:hover{
@@ -211,15 +215,16 @@ body {
     text-align: center;
 }
 
-    .my-AboutMapLeft > button {
-        border: none;
-        background-color: #f76540;
-        color: white;
-        font-weight: 600;
-        font-size: 1.5rem;
-        margin: 1rem auto;
-        padding: .5rem 3rem;
-        border-radius: 6px;
+.my-AboutMapLeft > a {
+    border: none;
+    background-color: #f76540;
+    color: white;
+    font-weight: 600;
+    font-size: 1.5rem;
+    margin: 3rem auto !important;
+    padding: .5rem 2rem;
+    border-radius: 6px;
+    text-decoration: none;
     }
 
 .my-AboutContentRight {
@@ -278,9 +283,9 @@ body {
     background-color: #f76540;
 }
 
-    .my-usuariosLogin > input[type="submit"]:active {
-        transform: scale(.95);
-    }
+.my-usuariosLogin > input[type="submit"]:active {
+    transform: scale(.95);
+}
 
 .my-usuariosFooter {
     margin-top: 5rem;
@@ -596,10 +601,146 @@ body {
     color: gray;
 }
 
+.my-UserCardButtons{
+    display: flex;
+    margin:1rem;
+}
+
+.my-UserCardButtons input[type="submit"] {
+    color: white;
+    border-radius: 6px;
+    padding: .25rem .5rem;
+    font-size: 1.15rem;
+    transition: .25s;
+}
+
+.my-UserCardButtons input[type="submit"]:active{
+    transform: scale(.95);
+}
+
+.my-UserCardButtons input[value="Confirmar"]{
+    background-color: green;
+    border: 1px solid green;
+}
+
+.my-UserCardButtons input[value="Confirmar"]:hover{
+    background-color: white;
+    color: green;
+}
+
+.my-UserCardButtons input[value="Eliminar"]{
+    margin-left: .5rem;
+    background-color: var(--danger);
+    border: 1px solid var(--danger);
+}
+
+.my-UserCardButtons input[value="Eliminar"]:hover{
+    background-color: white;
+    color: var(--danger);
+}
+
+.my-buttonEditPerfil{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 1.5rem;
+    margin: 2rem auto;
+}
+
+.my-ChangeInfoForm{
+    width: 22rem;
+    margin: 1rem auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.my-ChangeInfoForm div{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.my-ChangeInfoForm input {
+    margin:  0 auto;
+    font-size: 1.25rem;
+    padding: .5rem;
+    outline: none;
+    border-radius: 6px;
+    border: 1px solid #f76540;
+    width: 20rem;
+    margin-bottom: 1rem;
+}
+
+.my-ChangeInfoForm > input[type="submit"] {
+    color: white;
+    margin: 0;
+    background-color: #f76540;
+}
+
+.my-ChangeInfoForm > input[type="submit"]:active {
+    transform: scale(.95);
+}
+
+.my-ChangeInfoForm select{
+    margin: 1rem auto;
+    font-size: 1.5rem;
+    padding: .15rem .5rem;
+    border-radius: 5px;
+    outline: none;
+}
+
+.my-ChangeInfoForm textarea{
+    border: 1px solid gray;
+    border: 1px solid #f76540;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    height: 10rem;
+    width: 20rem;
+    resize: none;
+    background-color: transparent;
+    outline: none;
+}
+
+.my-mainText{
+    margin: 3rem auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.my-mainText hr{
+    height: .15rem;
+    width: 100%;
+}
+
+.my-mainText img{
+    margin: 1rem auto;
+    width: 50rem;
+}
+
+.my-ServicesTemplate{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem auto;
+    padding: 2rem;
+    border: 1px solid gray;
+}
+
+.my-ServicesTemplate > img{
+    margin: 2rem auto;
+    object-fit: cover;
+    width: 65vw;
+    height: 30rem;
+    border-radius: 5px;
+}
+
 @media screen and (max-width:990px) {
     .my-mainRight {
         width: 100%;
-        text-align: center;
         margin-top: 3rem;
     }
 
@@ -613,6 +754,10 @@ body {
 
     .My-ProducstItems-Right > img{
         margin-top: 1rem;
+    }
+
+    .my-mainText img{
+        width: 30rem;
     }
 }
 
@@ -662,6 +807,14 @@ body {
     .my-tableResponsive {
         width: 95vw;
         transform: scale(.8);
+    }
+
+    .my-tableOrder{
+        transform: scale(.9);
+    }
+
+    .my-mainText img {
+        width: 90vw;
     }
 }
 

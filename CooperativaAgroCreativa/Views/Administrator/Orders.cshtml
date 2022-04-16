@@ -6,11 +6,12 @@
     ViewData["Ordenar"] = "my-buttonActive";
 }
 
-<h1 class="text-center">Administrador De Ordenes</h1>
+<h1 class="text-center my-4">Administrador de órdenes de pedido</h1>
 
 @if(Model.Any())
 {
-    <table class="table table-bordered">
+    <h2 class="my-4">Ordenes nuevas:</h2>
+    <table class="table table-bordered my-tableOrder">
         <thead>
             <tr>
                 <th scope="col">Id</th>
@@ -25,11 +26,15 @@
             <tr>
                 <td>@order.Id</td>
                 <td>@order.Date</td>
-                <td><a href="/">Ver Orden Completa</a></td>
-                <td>
+                <td><a href="/">Ver orden completa</a></td>
+                <td class="d-flex">
                     <form method="post" action="/Orders/AceptedOrder">
                         <input type="hidden" name="Id" value=@order.Id />
                         <button type="submit" class="btn btn-info">Aceptar</button>
+                    </form>
+                    <form method="post" action="/Orders/RechazedOrder">
+                        <input type="hidden" name="Id" value=@order.Id />
+                        <button type="submit" class="ml-2 btn btn-danger">Rechazar</button>
                     </form>
                 </td>
             </tr>
@@ -38,5 +43,5 @@
     </table>
 } else
 {
-    <h5 style="color:gray;" class="text-center">Todavía no realizaste ninguna compra!</h5>
+    <h5 style="color:gray;" class="text-center">No hay compras pendientes!</h5>
 }

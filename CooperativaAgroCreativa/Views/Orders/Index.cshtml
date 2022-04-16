@@ -6,18 +6,18 @@
     ViewData["Ordenar"] = "my-buttonActive";
 }
 
-    <h1 class="text-center my-3">Orden De Pedido</h1>
-    <a href="/Orders/History">Ver Registro De Pedidos</a>
+    <h1 class="text-center my-3">Orden de pedido</h1>
+    <a href="/Orders/History" style="font-size: 1.25rem;">Ver registro de pedidos</a>
 @if(ViewBag.HayValores) {
     <div class="my-ProductOrderContainer">
         @foreach (var producto in Model)
         {
         <div class="my-ProductCardOrder">
             <div class="my-ProductCardOrderText">
-                <p>Id Del Producto: <b>@producto.Id </b></p>
+                <p>Id del producto: <b>@producto.Id </b></p>
                 <p>Talla: <b>@producto.Description </b></p>
-                <p>Precio: <b>@producto.UnityPrice ¢</b> </p>
-                <p>Cantidad Agregada: <b>@producto.Quantity Unidades</b></p>
+                <p>Precio: <b>  @producto.UnityPrice</b> </p>
+                <p>Cantidad agregada: ¢ <b>@producto.Quantity Unidades</b></p>
                 <div class="my-ProductCardOrderButtons">
                     <form method="post" action="/Orders/RestProductOrder">
                         <input name="Redirect" type="hidden" value="Orders" />
@@ -39,10 +39,10 @@
         </div>
         }
     </div>
-    <h3 class="text-center my-2">Total De Orden De Pedido: $<span>@ViewData["TotalPrice"].00</span></h3>
+    <h3 class="text-center my-2">Total de orden de pedido: ¢<span>@ViewData["TotalPrice"].00</span></h3>
 
     <div class="my-buttonOrderContainer">
-        <a href="/Orders/SubmitOrder" class="my-4 My-buttonProducts">Ordenar Pedido</a>
+        <a href="/Orders/SubmitOrder" class="my-4 My-buttonProducts">Ordenar pedido</a>
     </div>
 } else {
     <div>

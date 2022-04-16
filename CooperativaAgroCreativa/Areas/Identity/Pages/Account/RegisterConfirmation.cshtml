@@ -1,0 +1,17 @@
+﻿@page
+@model RegisterConfirmationModel
+@{
+    ViewData["Title"] = "Registro";
+}
+
+<h1 class="text-center">Usuario registrado exitosamente!</h1>
+@{
+    if (@Model.DisplayConfirmAccountLink)
+    {
+    <p class="text-center my-4">Para poder acceder a tu cuenta tienes que esperar la aceptación de un administrador del sitio. Logueate haciendo <a href="/Identity/Account/Login">Click Aquí</a></p>
+    }
+    else
+    {
+    <p class="text-center my-4">Para poder acceder a tu cuenta tienes que esperar la aceptación de un administrador del sitio. Logueate haciendo <a href="/Identity/Account/Login">Click Aquí</a></p>
+    }
+}

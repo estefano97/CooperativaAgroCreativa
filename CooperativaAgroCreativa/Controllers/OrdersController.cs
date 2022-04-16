@@ -293,6 +293,10 @@ namespace CooperativaAgroCreativa.Controllers
             db.SaveChanges();
 
             OrdersCreated YaCreada = db.OrdersCreateds.Where(d => d == ordenCreate).FirstOrDefault();
+            AspNetUser userInfo = db.AspNetUsers.Where(d => d.Id == usuario).FirstOrDefault();
+            
+            HttpContext.Items["Mail"] = userInfo.UserName;
+            HttpContext.Items["Phone"] = userInfo.Movil;
             HttpContext.Items["Id"] = YaCreada.Id;
             HttpContext.Items["Hour"] = YaCreada.Date.ToString();
             HttpContext.Items["TotalPrice"] = totalPrice;
@@ -334,6 +338,10 @@ namespace CooperativaAgroCreativa.Controllers
                 viewProducts.Add(nuevo);
             }
 
+            AspNetUser userInfo = db.AspNetUsers.Where(d => d.Id == usuario).FirstOrDefault();
+
+            HttpContext.Items["Mail"] = userInfo.UserName;
+            HttpContext.Items["Phone"] = userInfo.Movil;
             HttpContext.Items["Id"] = order.Id;
             HttpContext.Items["Hour"] = order.Date.ToString();
             HttpContext.Items["TotalPrice"] = totalPrice;
@@ -343,11 +351,23 @@ namespace CooperativaAgroCreativa.Controllers
 
             };
         }
-
-        public IActionResult AceptedOrder ()
+        
+        public IActionResult AceptedOrder (IFormCollection form)
         {
+            CoopeCreativa_RLContext db = new CoopeCreativa_RLContext();
+            var order = db.OrdersCreateds.Find(Int32.Parse(form["Id"]));
+            order.IsAcepted = 1;
+            db.SaveChanges();
+            return RedirectToAction("Orders", "Administrator");
+        }
 
-            return View();
+        public IActionResult RechazedOrder(IFormCollection form)
+        {
+            CoopeCreativa_RLContext db = new CoopeCreativa_RLContext();
+            var order = db.OrdersCreateds.Find(Int32.Parse(form["Id"]));
+            db.OrdersCreateds.Remove(order);
+            db.SaveChanges();
+            return RedirectToAction("Orders", "Administrator");
         }
     }
 }
