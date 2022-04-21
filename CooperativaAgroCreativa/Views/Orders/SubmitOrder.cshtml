@@ -11,7 +11,7 @@
 @if(ViewBag.HayValores)
 {
     <div>
-        <table class="table my-tableResponsive table-bordered">
+        <table class="table my-tableResponsive table-bordered"  style="text-align: right;">
         <thead>
           <tr>
             <th scope="col">Id</th>
@@ -36,7 +36,7 @@
         <tfoot>
             <tr>
                 <td colspan="4"><h3>Cantidad a pagar:</h3></td>
-                <td class="text-center"><h3>¢ @ViewData["TotalPrice"].00</h3></td>
+                <td class="text-center"><h3>¢@ViewData["TotalPrice"]</h3></td>
             </tr>
         </tfoot>
         </table>

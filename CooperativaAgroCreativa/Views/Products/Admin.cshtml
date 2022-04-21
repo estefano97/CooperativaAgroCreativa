@@ -11,7 +11,7 @@
     <div class="container">
   <div class="row">
     <div class="col-12">
-        <table class="table table-bordered">
+        <table class="table table-bordered" style="text-align: right;">
         <thead>
           <tr>
             <th scope="col">Id</th>
@@ -26,7 +26,7 @@
     <tr>
         <th scope="row">@producto.Id</th>
         <td>@producto.Quantity</td>
-        <td>$@producto.UnityPrice</td>
+        <td>¢@producto.UnityPrice</td>
         <td>
             <a href="/Products/Edit/@producto.Id" class="btn btn-success">Editar <i class="fas fa-edit"></i></a>
             <a href="/Products/Delete/@producto.Id" class="btn btn-danger">Eliminar <i class="far fa-trash-alt"></i></a>
@@ -35,7 +35,9 @@
     }
     </tbody>
       </table>
-      <h1 class="text-center"><a href="/Services/Admin">Editar servicios</a></h1>
+      <div style="display: flex; align-items: center; justify-content: center; margin: 2rem auto;">
+          <a class="btn" style="background-color: #f76540; border: #f76540 1px solid; color: white;" href="/Services/Admin"><h1>Editar servicios</h1></a>
+      </div>
     </div>
   </div>
 </div>

@@ -25,14 +25,15 @@
                        <option value="Pequeña">Pequeña</option>
                        <option value="Mediana">Mediana</option>
                        <option value="Grande">Grande</option>
-                       <option value="ExtraGrande">Extra Grande</option>
+                       <option value="Extra grande">Extra Grande</option>
                    </select></p>
                    } else {
+                       <input type="hidden" name="Talla" value="No aplica"/>
                        <p style="color: gray;">Talla no aplicable</p>
                    }
                </div>
                <div class="My-ProductsTextFooter">
-                   <h2>¢ <span>@producto.UnityPrice</span>.00</h2>
+                   <h2>¢<span>@producto.UnityPrice</span></h2>
                    
                        <input name="Id" type="hidden" value=@producto.Id />
                        <button class="My-buttonProducts text-center" type="submit">Agregar <i class="fa-solid fa-cart-plus"></i></button>

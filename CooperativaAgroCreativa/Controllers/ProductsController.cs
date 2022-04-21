@@ -56,7 +56,15 @@ namespace CooperativaAgroCreativa.Controllers
             nuevo.Quantity = Int32.Parse(form["Quantity"]);
             nuevo.UnityPrice = form["UnityPrice"];
             nuevo.State = form["State"];
-            nuevo.Sizes = Int32.Parse(form["Sizes"]);
+            Console.WriteLine("-------------------");
+            Console.WriteLine(form["Size"]);
+            if (form["Size"] == "1")
+            {
+                nuevo.Sizes = 1;
+            } else
+            {
+                nuevo.Sizes = 0;
+            }
             nuevo.Image = "/assets/productos/default.png";
             nuevo.Date = DateTime.Now;
             db.Products.Add(nuevo);
@@ -100,7 +108,14 @@ namespace CooperativaAgroCreativa.Controllers
             Producto.Description = editado["Description"];
             Producto.Quantity = Int32.Parse(editado["Quantity"]);
             Producto.UnityPrice = editado["UnityPrice"];
-            Producto.Sizes = Int32.Parse(editado["Sizes"]);
+            if (editado["Size"] == "1")
+            {
+                Producto.Sizes = 1;
+            }
+            else
+            {
+                Producto.Sizes = 0;
+            }
             db.SaveChanges();
             return RedirectToAction("Index");
         }

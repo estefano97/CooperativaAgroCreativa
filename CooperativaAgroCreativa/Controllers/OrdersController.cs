@@ -351,7 +351,46 @@ namespace CooperativaAgroCreativa.Controllers
 
             };
         }
-        
+
+        [Authorize(Roles = "Administrador")]
+        public IActionResult FinishedAdmin(int id)
+        {
+            var usuario = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            CoopeCreativa_RLContext db = new CoopeCreativa_RLContext();
+            OrdersCreated order = db.OrdersCreateds.Where(d => d.Id == id).FirstOrDefault();
+
+            List<OrderProducts> userProducts = JsonConvert.DeserializeObject<List<OrderProducts>>(order.Products);
+            List<Product> viewProducts = new List<Product>();
+
+            int totalPrice = 0;
+
+            foreach (var product in userProducts)
+            {
+                Product data = db.Products.Where(d => d.Id == Int32.Parse(product.ProductId)).FirstOrDefault();
+                Product nuevo = new Product();
+                nuevo.Id = Int32.Parse(product.ProductId);
+                nuevo.Description = product.Talla;
+                nuevo.Quantity = product.Quantity;
+                nuevo.UnityPrice = data.UnityPrice;
+                totalPrice += Int32.Parse(nuevo.UnityPrice) * nuevo.Quantity;
+                viewProducts.Add(nuevo);
+            }
+
+            AspNetUser userInfo = db.AspNetUsers.Where(d => d.Id == usuario).FirstOrDefault();
+
+            HttpContext.Items["Mail"] = userInfo.UserName;
+            HttpContext.Items["Phone"] = userInfo.Movil;
+            HttpContext.Items["Id"] = order.Id;
+            HttpContext.Items["Hour"] = order.Date.ToString();
+            HttpContext.Items["TotalPrice"] = totalPrice;
+
+            return new ViewAsPdf("Order", viewProducts)
+            {
+
+            };
+        }
+
+
         public IActionResult AceptedOrder (IFormCollection form)
         {
             CoopeCreativa_RLContext db = new CoopeCreativa_RLContext();

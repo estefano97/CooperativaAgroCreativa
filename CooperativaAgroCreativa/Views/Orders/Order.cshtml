@@ -10,14 +10,14 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
 </head>
 <body>
-    <h1 class="text-center">Compra realizada con exito</h1>
+    <h1 class="text-center">Orden de pedido realizada con éxito</h1>
     <div class="my-4 mx-3">
         <p><b>Fecha y hora de compra:</b> @Context.Items["Hour"]</p>
         <p><b>Id de compra:</b> @Context.Items["Id"]</p>
         <p><b>Correo:</b> @Context.Items["Mail"]</p>
         <p><b>Celular:</b> @Context.Items["Phone"]</p>
     </div>
-    <table class="table my-tableResponsive table-bordered">
+    <table class="table my-tableResponsive table-bordered"  style="text-align: right;">
         <thead>
           <tr>
             <th scope="col">Id</th>
@@ -42,10 +42,12 @@
         <tfoot>
             <tr>
                 <td colspan="4"><h3>Cantidad a pagar:</h3></td>
-                <td class="text-center"><h3>¢ @Context.Items["TotalPrice"].00</h3></td>
+                <td class="text-center"><h3>¢@Context.Items["TotalPrice"]</h3></td>
             </tr>
         </tfoot>
         </table>
+
+        <img style="margin: 3rem 15rem; width: 25rem;" src="~/assets/images/logo-coopeagro.png"/>
 </body>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

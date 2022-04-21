@@ -22,8 +22,8 @@
         <label for="State">Estado</label>
         <input name="State" type="number" value=@Model.State />
 
-        <label for="Sizes">Talla valida <span style="color: gray;">(0 es no aplica, y 1 es si aplica.)</span></label>
-        <input name="Sizes" type="number" value=@Model.Sizes />
+        <label for="Size">¿La talla es válida en este producto?</label>
+        <input type="checkbox" value="1" id="Size" name="Size"/>
 
         <input class="my-submitForm" type="submit" value="Confirmar"/>
     </form>

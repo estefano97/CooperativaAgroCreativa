@@ -16,19 +16,19 @@
             <div class="my-ProductCardOrderText">
                 <p>Id del producto: <b>@producto.Id </b></p>
                 <p>Talla: <b>@producto.Description </b></p>
-                <p>Precio: <b>  @producto.UnityPrice</b> </p>
-                <p>Cantidad agregada: ¢ <b>@producto.Quantity Unidades</b></p>
+                <p>Precio: <b>¢@producto.UnityPrice</b> </p>
+                <p>Cantidad agregada: <b>@producto.Quantity Unidades</b></p>
                 <div class="my-ProductCardOrderButtons">
                     <form method="post" action="/Orders/RestProductOrder">
                         <input name="Redirect" type="hidden" value="Orders" />
                         <input name="Id" type="hidden" value=@producto.Id />
-                        <input name="Talla" type="hidden" value=@producto.Description />
+                        <input name="Talla" type="hidden" value="@producto.Description" />
                         <button class="my-RestButton" type="submit"> <i class="fa-solid fa-minus"></i> </button>
                     </form>
                     <form method="post" action="/Orders/AddProductOrder">
                         <input name="Redirect" type="hidden" value="Orders" />
                         <input name="Id" type="hidden" value=@producto.Id />
-                        <input name="Talla" type="hidden" value=@producto.Description />
+                        <input name="Talla" type="hidden" value="@producto.Description" />
                         <button class="my-AddButton" type="submit"><i class="fa-solid fa-plus"></i></button>
                     </form>
                 </div>
@@ -39,7 +39,7 @@
         </div>
         }
     </div>
-    <h3 class="text-center my-2">Total de orden de pedido: ¢<span>@ViewData["TotalPrice"].00</span></h3>
+    <h3 class="text-center my-2">Total de orden de pedido: ¢<span>@ViewData["TotalPrice"]</span></h3>
 
     <div class="my-buttonOrderContainer">
         <a href="/Orders/SubmitOrder" class="my-4 My-buttonProducts">Ordenar pedido</a>

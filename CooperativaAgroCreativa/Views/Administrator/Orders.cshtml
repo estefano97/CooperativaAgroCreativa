@@ -11,7 +11,7 @@
 @if(Model.Any())
 {
     <h2 class="my-4">Ordenes nuevas:</h2>
-    <table class="table table-bordered my-tableOrder">
+    <table class="table table-bordered my-tableOrder"  style="text-align: right;">
         <thead>
             <tr>
                 <th scope="col">Id</th>
@@ -26,7 +26,7 @@
             <tr>
                 <td>@order.Id</td>
                 <td>@order.Date</td>
-                <td><a href="/">Ver orden completa</a></td>
+                <td> <a href="/Orders/FinishedAdmin/@order.Id">Ver Comprobante</a></td>
                 <td class="d-flex">
                     <form method="post" action="/Orders/AceptedOrder">
                         <input type="hidden" name="Id" value=@order.Id />
@@ -43,5 +43,5 @@
     </table>
 } else
 {
-    <h5 style="color:gray;" class="text-center">No hay compras pendientes!</h5>
+    <h5 style="color:gray;" class="text-center">No hay órdenes pendientes!</h5>
 }
