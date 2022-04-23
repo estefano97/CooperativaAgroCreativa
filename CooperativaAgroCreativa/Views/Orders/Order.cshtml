@@ -16,6 +16,7 @@
         <p><b>Id de compra:</b> @Context.Items["Id"]</p>
         <p><b>Correo:</b> @Context.Items["Mail"]</p>
         <p><b>Celular:</b> @Context.Items["Phone"]</p>
+        <p><b>Usuario solicitante:</b> @Context.Items["Name"]</p>
     </div>
     <table class="table my-tableResponsive table-bordered"  style="text-align: right;">
         <thead>
@@ -41,7 +42,7 @@
         </tbody>
         <tfoot>
             <tr>
-                <td colspan="4"><h3>Cantidad a pagar:</h3></td>
+                <td colspan="4"><h3>Monto a pagar:</h3></td>
                 <td class="text-center"><h3>¢@Context.Items["TotalPrice"]</h3></td>
             </tr>
         </tfoot>

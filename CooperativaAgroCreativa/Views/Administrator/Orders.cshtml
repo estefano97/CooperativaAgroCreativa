@@ -10,7 +10,7 @@
 
 @if(Model.Any())
 {
-    <h2 class="my-4">Ordenes nuevas:</h2>
+    <h2 class="my-4">Órdenes nuevas:</h2>
     <table class="table table-bordered my-tableOrder"  style="text-align: right;">
         <thead>
             <tr>
@@ -45,3 +45,6 @@
 {
     <h5 style="color:gray;" class="text-center">No hay órdenes pendientes!</h5>
 }
+<div style="display: flex; align-items: center; justify-content: center; margin: 2rem auto;">
+    <a class="btn" style="background-color: #f76540; border: #f76540 1px solid; color: white;" href="/Administrator/OrdersAcepted"><h1>Ver Órdenes Aceptadas</h1></a>
+</div>

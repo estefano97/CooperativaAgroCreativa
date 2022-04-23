@@ -1,13 +1,15 @@
 ﻿@using CooperativaAgroCreativa.Models.DB
 @model IEnumerable<Service>
 @{
-    ViewData["Servicios"] = "my-buttonActive";
+    ViewData["Productos"] = "my-buttonActive";
     ViewData["Title"] = "Servicos";
 }
 
 <div class="container">
     <h1 class="text-center my-4">Catálogo de servicios</h1>
-    <a href="/Services/Create">Agregar servicio</a>
+    <div style="display: flex; align-items: center; justify-content: center; margin: 1rem auto;">
+        <a class="btn btn-primary" style="font-size: 1.25rem;" href="/Services/Create">Agregar servicio</a>
+    </div>
     <div class="container">
   <div class="row">
     <div class="col-12">

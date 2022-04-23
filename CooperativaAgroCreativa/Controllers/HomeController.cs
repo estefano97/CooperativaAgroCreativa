@@ -39,30 +39,36 @@ namespace CooperativaAgroCreativa.Controllers
         [HttpPost]
         public IActionResult SendForm(IFormCollection form)
         {
-            string EmailOrigen = "thehatfactorysoftware@gmail.com";
-            string EmailDestino = "oldemarcr@gmail.com";
-            string Password = "4Y!REMqpoa1I";
+            try
+            {
+                string EmailOrigen = "thehatfactorysoftware@gmail.com";
+                string EmailDestino = "oldemarcr@gmail.com";
+                string Password = "4Y!REMqpoa1I";
 
-            string cabezera = $"Formulario enviado por {form["nombre"]}.";
+                string cabezera = $"Formulario enviado por {form["nombre"]}.";
 
-            string cuerpo = $"<b>Email del solicitante:</b> {form["correo"]}." +
-                $"<br><b>Dirección del solicitante:</b> {form["direccion"]}." +
-                $"<br><br><b>Comentarios:</b><br> {form["comentarios"]}.";
+                string cuerpo = $"<b>Email del solicitante:</b> {form["correo"]}." +
+                    $"<br><b>Dirección del solicitante:</b> {form["direccion"]}." +
+                    $"<br><br><b>Comentarios:</b><br> {form["comentarios"]}.";
 
-            MailMessage oMailMessage = new MailMessage(EmailOrigen, EmailDestino, cabezera, cuerpo);
+                MailMessage oMailMessage = new MailMessage(EmailOrigen, EmailDestino, cabezera, cuerpo);
 
-            oMailMessage.IsBodyHtml = true;
+                oMailMessage.IsBodyHtml = true;
 
-            SmtpClient oSmtpClient = new SmtpClient("smtp.gmail.com");
-            oSmtpClient.EnableSsl = true;
-            oSmtpClient.UseDefaultCredentials = false;
-            oSmtpClient.Host = "smtp.gmail.com";
-            oSmtpClient.Port = 587;
-            oSmtpClient.Credentials = new System.Net.NetworkCredential(EmailOrigen, Password);
-            oSmtpClient.Send(oMailMessage);
-            oSmtpClient.Dispose();
-
-            return View("Index");
+                SmtpClient oSmtpClient = new SmtpClient("smtp.gmail.com");
+                oSmtpClient.EnableSsl = true;
+                oSmtpClient.UseDefaultCredentials = false;
+                oSmtpClient.Host = "smtp.gmail.com";
+                oSmtpClient.Port = 587;
+                oSmtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
+                oSmtpClient.Credentials = new System.Net.NetworkCredential(EmailOrigen, Password);
+                oSmtpClient.Send(oMailMessage);
+                oSmtpClient.Dispose();
+                return View("Index");
+            } catch 
+            {
+                return View("Index");
+            }
         }
 
         public IActionResult About()

@@ -1,0 +1,36 @@
+﻿@using CooperativaAgroCreativa.Data
+@using CooperativaAgroCreativa.Models.DB
+@model IEnumerable<OrdersCreated>
+@{
+    ViewData["Title"] = "Orders";
+    ViewData["Ordenar"] = "my-buttonActive";
+}
+
+<h1 class="text-center my-4">Administrador de órdenes aceptadas</h1>
+
+@if(Model.Any())
+{
+    <h2 class="my-4">Órdenes aceptadas:</h2>
+    <table class="table table-bordered my-tableOrder"  style="text-align: right;">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Fecha de ingreso</th>
+                <th scope="col">Ver orden</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach(var order in Model)
+        {
+            <tr>
+                <td>@order.Id</td>
+                <td>@order.Date</td>
+                <td> <a href="/Orders/FinishedAdmin/@order.Id">Ver Comprobante</a></td>
+            </tr>
+        }
+        </tbody>
+    </table>
+} else
+{
+    <h5 style="color:gray;" class="text-center">No hay órdenes aceptadas!</h5>
+}

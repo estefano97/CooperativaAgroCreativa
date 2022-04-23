@@ -192,3 +192,4 @@ C:\Users\kali_\source\repos\CooperativaAgroCreativa\CooperativaAgroCreativa\obj\
 C:\Users\kali_\source\repos\CooperativaAgroCreativa\CooperativaAgroCreativa\obj\Release\net5.0\ref\CooperativaAgroCreativa.dll
 C:\Users\kali_\source\repos\CooperativaAgroCreativa\CooperativaAgroCreativa\obj\Release\net5.0\CooperativaAgroCreativa.pdb
 C:\Users\kali_\source\repos\CooperativaAgroCreativa\CooperativaAgroCreativa\obj\Release\net5.0\CooperativaAgroCreativa.genruntimeconfig.cache
+C:\Users\kali_\source\repos\CooperativaAgroCreativa\CooperativaAgroCreativa\obj\Release\net5.0\Razor\Views\Administrator\OrdersAcepted.cshtml.g.cs

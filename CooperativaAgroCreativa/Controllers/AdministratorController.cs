@@ -91,6 +91,14 @@ namespace CooperativaAgroCreativa.Controllers
         }
 
         [Authorize(Roles = "Administrador")]
+        public IActionResult OrdersAcepted()
+        {
+            CoopeCreativa_RLContext db = new CoopeCreativa_RLContext();
+            List<OrdersCreated> ordenes = db.OrdersCreateds.Where(d => d.IsAcepted == 1).ToList();
+            return View(ordenes);
+        }
+
+        [Authorize(Roles = "Administrador")]
         [HttpPost]
         public IActionResult DeleteUser(string id)
         {

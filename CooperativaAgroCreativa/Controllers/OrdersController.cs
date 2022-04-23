@@ -254,6 +254,7 @@ namespace CooperativaAgroCreativa.Controllers
                     Product data = db.Products.Where(d => d.Id == Int32.Parse(elements.ProductId)).FirstOrDefault();
                     Product element = new Product();
 
+                    
                     element.Id = data.Id;
                     element.UnityPrice = data.UnityPrice;
                     element.Image = data.Image;
@@ -294,7 +295,8 @@ namespace CooperativaAgroCreativa.Controllers
 
             OrdersCreated YaCreada = db.OrdersCreateds.Where(d => d == ordenCreate).FirstOrDefault();
             AspNetUser userInfo = db.AspNetUsers.Where(d => d.Id == usuario).FirstOrDefault();
-            
+
+            HttpContext.Items["Name"] = userInfo.FullName;
             HttpContext.Items["Mail"] = userInfo.UserName;
             HttpContext.Items["Phone"] = userInfo.Movil;
             HttpContext.Items["Id"] = YaCreada.Id;
@@ -340,6 +342,7 @@ namespace CooperativaAgroCreativa.Controllers
 
             AspNetUser userInfo = db.AspNetUsers.Where(d => d.Id == usuario).FirstOrDefault();
 
+            HttpContext.Items["Name"] = userInfo.FullName;
             HttpContext.Items["Mail"] = userInfo.UserName;
             HttpContext.Items["Phone"] = userInfo.Movil;
             HttpContext.Items["Id"] = order.Id;
@@ -376,8 +379,9 @@ namespace CooperativaAgroCreativa.Controllers
                 viewProducts.Add(nuevo);
             }
 
-            AspNetUser userInfo = db.AspNetUsers.Where(d => d.Id == usuario).FirstOrDefault();
+            AspNetUser userInfo = db.AspNetUsers.Where(d => d.Id == order.IdUser).FirstOrDefault();
 
+            HttpContext.Items["Name"] = userInfo.FullName;
             HttpContext.Items["Mail"] = userInfo.UserName;
             HttpContext.Items["Phone"] = userInfo.Movil;
             HttpContext.Items["Id"] = order.Id;

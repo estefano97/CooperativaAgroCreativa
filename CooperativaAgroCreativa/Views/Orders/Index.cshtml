@@ -7,7 +7,9 @@
 }
 
     <h1 class="text-center my-3">Orden de pedido</h1>
-    <a href="/Orders/History" style="font-size: 1.25rem;">Ver registro de pedidos</a>
+    <div style="display: flex; align-items: center; justify-content: center; margin: 1rem auto;">
+        <a href="/Orders/History" class="btn btn-primary" style="font-size: 1.25rem;">Ver registro de pedidos</a>
+    </div>
 @if(ViewBag.HayValores) {
     <div class="my-ProductOrderContainer">
         @foreach (var producto in Model)
