@@ -19,11 +19,13 @@
         <label for="UnityPrice">Precio por unidad</label>
         <input name="UnityPrice" type="number" value=@Model.UnityPrice />
 
-        <label for="State">Estado</label>
-        <input name="State" type="number" value=@Model.State />
+        <label class="mt-0" for="State">Estado (<p class="text-center" style="color:gray; font-size: .8rem; display: inline;">0 es <b>activo</b>, y 1 es <b>inactivo</b></p>)</label>
+        <input required name="State" min="0" max="1" type="number" value=@Model.State />
 
-        <label for="Size">¿La talla es válida en este producto?</label>
-        <input type="checkbox" value="1" id="Size" name="Size"/>
+        <div style="margin: 1rem auto;display: flex; align-items: center; justify-content: space-around;">
+            <input type="checkbox" value="0" id="Size" name="Size"/>
+            <label for="Size">¿La talla es válida en este producto?</label>
+        </div>
 
         <input class="my-submitForm" type="submit" value="Confirmar"/>
     </form>

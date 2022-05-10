@@ -193,3 +193,4 @@ C:\Users\kali_\source\repos\CooperativaAgroCreativa\CooperativaAgroCreativa\obj\
 C:\Users\kali_\source\repos\CooperativaAgroCreativa\CooperativaAgroCreativa\obj\Debug\net5.0\Razor\Views\Services\Delete.cshtml.g.cs
 C:\Users\kali_\source\repos\CooperativaAgroCreativa\CooperativaAgroCreativa\obj\Debug\net5.0\Razor\Views\Services\Edit.cshtml.g.cs
 C:\Users\kali_\source\repos\CooperativaAgroCreativa\CooperativaAgroCreativa\obj\Debug\net5.0\Razor\Views\Administrator\OrdersAcepted.cshtml.g.cs
+C:\Users\kali_\source\repos\CooperativaAgroCreativa\CooperativaAgroCreativa\obj\Debug\net5.0\Razor\Views\Administrator\ChangeRoleUser.cshtml.g.cs

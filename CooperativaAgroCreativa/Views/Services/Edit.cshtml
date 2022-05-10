@@ -9,6 +9,9 @@
     <h1 class="text-center my-4">Editar el producto @Model.Id</h1>
 
     <form action="/Services/EditPost" method="post" class="my-EditForm">
+
+        <input type="hidden" name="Id" value=@Model.Id />
+
         <label>Título</label>
         <input required name="title" type="text" value="@Model.Title" />
 

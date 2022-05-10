@@ -1,0 +1,18 @@
+﻿@{
+    ViewData["Title"] = "Usuarios Solicitantes";
+    ViewData["Usuarios"] = "my-buttonActive";
+}
+
+<h2 class="text-center">Cambiando rol de: <span style="color:gray; font-style:italic;">@ViewData["nameUser"]</span></h2>
+<form class="my-ChangeInfoForm" method="post" action="/Administrator/ChangeRolUserConfirm">
+    <input type="hidden" name="idUser" value="@ViewData["idUser"]" />
+    <select name="newRol">
+        <option value="Administrador">Administrador</option>
+        <option value="Usuario">Usuario</option>
+        <option value="Socio">Socio</option>
+    </select>
+
+    <h4 class="text-center" style="color: var(--danger); margin: 1rem auto;">Para aceptar el cambio de rol, necesitas aceptar al usuario.</h4>
+
+    <input type="submit" value="Confirmar"/>
+    </form>

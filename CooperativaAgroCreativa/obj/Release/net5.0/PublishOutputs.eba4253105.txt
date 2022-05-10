@@ -11,8 +11,11 @@ C:\Users\kali_\source\repos\CooperativaAgroCreativa\CooperativaAgroCreativa\obj\
 C:\Users\kali_\source\repos\CooperativaAgroCreativa\CooperativaAgroCreativa\obj\Release\net5.0\PubTmp\Out\wwwroot\assets\productos\estefano-photo.jpg
 C:\Users\kali_\source\repos\CooperativaAgroCreativa\CooperativaAgroCreativa\obj\Release\net5.0\PubTmp\Out\wwwroot\assets\productos\lapiz-2.png
 C:\Users\kali_\source\repos\CooperativaAgroCreativa\CooperativaAgroCreativa\obj\Release\net5.0\PubTmp\Out\wwwroot\assets\productos\lapiz.png
+C:\Users\kali_\source\repos\CooperativaAgroCreativa\CooperativaAgroCreativa\obj\Release\net5.0\PubTmp\Out\wwwroot\assets\productos\marcadores.jpg
 C:\Users\kali_\source\repos\CooperativaAgroCreativa\CooperativaAgroCreativa\obj\Release\net5.0\PubTmp\Out\wwwroot\assets\productos\template.jpg
+C:\Users\kali_\source\repos\CooperativaAgroCreativa\CooperativaAgroCreativa\obj\Release\net5.0\PubTmp\Out\wwwroot\assets\productos\zapatos-cuero.jpg
 C:\Users\kali_\source\repos\CooperativaAgroCreativa\CooperativaAgroCreativa\obj\Release\net5.0\PubTmp\Out\wwwroot\assets\servicios\bicicleta.jpg
+C:\Users\kali_\source\repos\CooperativaAgroCreativa\CooperativaAgroCreativa\obj\Release\net5.0\PubTmp\Out\wwwroot\assets\servicios\marcadores.jpg
 C:\Users\kali_\source\repos\CooperativaAgroCreativa\CooperativaAgroCreativa\obj\Release\net5.0\PubTmp\Out\wwwroot\css\site.css
 C:\Users\kali_\source\repos\CooperativaAgroCreativa\CooperativaAgroCreativa\obj\Release\net5.0\PubTmp\Out\wwwroot\favicon.ico
 C:\Users\kali_\source\repos\CooperativaAgroCreativa\CooperativaAgroCreativa\obj\Release\net5.0\PubTmp\Out\wwwroot\js\site.js

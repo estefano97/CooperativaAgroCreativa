@@ -34,7 +34,7 @@ namespace CooperativaAgroCreativa.Models.DB
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Server=DESKTOP-DMLE9MD; Database=CoopeCreativa_RL; Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer("Data Source=SQL8001.site4now.net;Initial Catalog=db_a85ff5_estefanochuqui;User Id=db_a85ff5_estefanochuqui_admin;Password=S*#Bqx*9P#Hvx84");
             }
         }
 

@@ -28,7 +28,7 @@ namespace CooperativaAgroCreativa.Controllers
         public IActionResult Index()
         {
             CoopeCreativa_RLContext db = new CoopeCreativa_RLContext();
-            List<Product> Productos = db.Products.ToList();
+            List<Product> Productos = db.Products.Where(d => d.State == "0").ToList();
             return View(Productos);
         }
 
@@ -56,14 +56,12 @@ namespace CooperativaAgroCreativa.Controllers
             nuevo.Quantity = Int32.Parse(form["Quantity"]);
             nuevo.UnityPrice = form["UnityPrice"];
             nuevo.State = form["State"];
-            Console.WriteLine("-------------------");
-            Console.WriteLine(form["Size"]);
-            if (form["Size"] == "1")
-            {
-                nuevo.Sizes = 1;
-            } else
+            if (form["Size"] == "0")
             {
                 nuevo.Sizes = 0;
+            } else
+            {
+                nuevo.Sizes = 1;
             }
             nuevo.Image = "/assets/productos/default.png";
             nuevo.Date = DateTime.Now;
@@ -108,13 +106,14 @@ namespace CooperativaAgroCreativa.Controllers
             Producto.Description = editado["Description"];
             Producto.Quantity = Int32.Parse(editado["Quantity"]);
             Producto.UnityPrice = editado["UnityPrice"];
-            if (editado["Size"] == "1")
+            Producto.State = editado["State"];
+            if (editado["Size"] == "0")
             {
-                Producto.Sizes = 1;
+                Producto.Sizes = 0;
             }
             else
             {
-                Producto.Sizes = 0;
+                Producto.Sizes = 1;
             }
             db.SaveChanges();
             return RedirectToAction("Index");

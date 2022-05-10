@@ -2,10 +2,9 @@
 using CooperativaAgroCreativa.Models.DB;
 using CooperativaAgroCreativa.ViewModel;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -110,7 +109,28 @@ namespace CooperativaAgroCreativa.Controllers
             return RedirectToAction("Index", "Administrator");
         }
 
+        [Authorize(Roles = "Administrador")]
+        [HttpPost]
+        public IActionResult ChangeRoleUser(IFormCollection form)
+        {
+            ViewData["idUser"] = form["id"];
+            ViewData["nameUser"] = form["name"];
+            return View();
+        }
 
+        [Authorize(Roles = "Administrador")]
+        [HttpPost]
+        public IActionResult ChangeRolUserConfirm(IFormCollection form)
+        {
+            CoopeCreativa_RLContext db = new CoopeCreativa_RLContext();
+            var userRol = db.AspNetUserRoles.Where(d => d.UserId == form["idUser"].ToString()).FirstOrDefault();
+            db.AspNetUserRoles.Remove(userRol);
+            AspNetUser dataUser = db.AspNetUsers.Where(d => d.Id == form["idUser"].ToString()).FirstOrDefault();
+            dataUser.EmailConfirmed = false;
+            dataUser.Role = form["newRol"];
+            db.SaveChanges();
+            return RedirectToAction("Index", "Administrator");
+        }
 
     }
 }
